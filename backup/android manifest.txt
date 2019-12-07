@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="here.app">
+<!-- Отображение карты в приложении зависит от доступа в интернет. Также в SDK предусмотрено кэширование тайлов карты,
+    поэтому нам необходимо добавить в файле манифеста соответствующие разрешения: -->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- // meta берем из https://developer.here.com/projects/PROD-3638f809-952c-470a-9b67-9d9228390797 -->
+
+        <meta-data
+            android:name="com.here.android.maps.appid"
+            android:value="a6PmQUVZVDLaXppLzcuZ" />
+        <meta-data
+            android:name="com.here.android.maps.apptoken"
+            android:value="ytJ4swebgJl7eS1BIVmHKg" />
+        <meta-data
+            android:name="com.here.android.maps.license.key"
+            android:value="ImocMopOn6gzHV4ZgXQ/AitCiz6VkiRmMzmAd1XJCjdEFdOSLbQOmtAB+/24UyC89Ez+3zPFidv1StQszohowd8SrfZx7g8LUNosG2VYhnHRogT3cNJSSs3uhMhczIhuC06qFpVJPuq5n7atzagG3hBodKoyw7vqLtYN21Z1lSaTFHBzYR+8KlbwaN1teFpegT2s2Oyfat76qSpOaABnTmnPNHKba4rEyc6Ld2CI91pT6SHVdIlTyRak+o44+BHjtlDoBqPCVqOUL9wC5TNMqKqImrgk1W+NAAgzqY5xymj3++gdUK0x6ANVT2otorUNE9k/XJ+oEVvORqvPb7nMAoHco4YBgwkCoEIJp4mANWcS2AY1Ya0nt0GmUtHcKlgShdANLlLMA2rNpAnCwdI+c2TZ4LgYVERF/XovHwQ60p5P3aFQ40266z6gBKY91Tf+h0ziR6TLYq3kbJTWyaflqNA/LOAM6vnofNkYBKKSJs0B+8q55iNK/ew/ke3RUhtsq0I4w3EJFaLieAu5zcfElLL0lUvjkOLUKeRfJXkGCGT9gkxYYwmEIGTC4RmIwFBlN1pSlGT5YqsY6l8So1diJUP3804TuzTuWJ/cgbmacLcSL7eMD6CsE16ezqU6Ziy6qi1fKyuYt5TaCDygywDePyITnfMK9hI5HAL5XfQ2cnQ=" />
+        <!--//в Premium SDK необходимо добавить работу специального сервиса:-->
+        <!--  map serviceдиректория для сохрарнения карт? -->
+        <service
+            android:name="com.here.android.mpa.service.MapService"
+            android:label="MapServiceLabel"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="MapService"></action>
+            </intent-filter>
+        </service>
+    </application>
+
+
+
+</manifest>
